@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 const App = () => {
   const [userData, setUserData] = useState({ name: "", age: "" });
   const [showSequence, setShowSequence] = useState(false);
-  const [loopLength, setLoopLength] = useState(4)
+  const [loopLength, setLoopLength] = useState(3)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -17,14 +17,14 @@ const App = () => {
   };
 
   const handleLength = () =>{
-    if(loopLength<4){
-      setLoopLength(4)
+    if(loopLength<3){
+      setLoopLength(3)
     }
     setLoopLength(loopLength+1)
   }
   const handleLengthDe = () =>{
-    if(loopLength<=4){
-      setLoopLength(4)
+    if(loopLength<=3){
+      setLoopLength(3)
     }else{
       setLoopLength(loopLength-1)
     }
@@ -135,7 +135,7 @@ const Sequence = ({ userData,loopLength }) => {
         setTimeout(() => {
           index++;
           displayItem();
-        }, sequence[index].type === "plus" ? 150 : 50);
+        }, sequence[index].type === "plus" ? 1000 : 500);
       } else {
         setSequenceComplete(true);
         setOptions(generateOptions());
