@@ -135,7 +135,7 @@ const Sequence = ({ userData,loopLength }) => {
         setTimeout(() => {
           index++;
           displayItem();
-        }, sequence[index].type === "plus" ? 1000 : 500);
+        }, sequence[index].type === "plus" ? 200 : 100);
       } else {
         setSequenceComplete(true);
         setOptions(generateOptions());
