@@ -61,7 +61,7 @@ const App = () => {
             </div>
             
             <button type="submit" className="py-2 px-5 bg-blue-500 text-white rounded-md">
-              Start
+              Start Exam 2
             </button>
           </form>
         ) : (
@@ -113,7 +113,7 @@ const Sequence = ({ userData,loopLength }) => {
     }
 
     const secondLetter = randomElement(letters);
-    const secondColor = randomElement(colors);
+    const secondColor = 'black';
     sequence.push({ type: "letter", value: secondLetter, color: secondColor });
 
     for (let i = 0; i < 6; i++) {
@@ -244,7 +244,7 @@ const Sequence = ({ userData,loopLength }) => {
           ) : currentItem.type === "digit" ? (
             <span className="text-black" style={{fontSize:'33px',letterSpacing:'16px'}}>{currentItem.value}</span>
           ) : (
-            <span style={{ color: currentItem?.color,fontSize:'36px',letterSpacing:'20px'}} >{currentItem.value}</span>
+            <span style={{ color: currentItem?.color,fontSize:'36px',letterSpacing:'20px'}}>{currentItem.value}</span>
           )
         ) : null}
       </div>
@@ -253,7 +253,7 @@ const Sequence = ({ userData,loopLength }) => {
         <>
           <button
             onClick={handleQuestions}
-            className="mt-4 p-2 bg-green-500 text-white"
+            className="mt-4 p-2 bg-green-500 text-white px-4 rounded-md"
           >
             Answer Questions
           </button>
@@ -281,7 +281,7 @@ const Sequence = ({ userData,loopLength }) => {
           </div>
           <button
             onClick={handleNextQuestion}
-            className="mt-4 p-2 bg-blue-500 text-white"
+            className="mt-4 p-2 bg-blue-500 text-white px-4 rounded-md"
             disabled={!answers[generatedQuestions[currentQuestionIndex].answerKey]}
           >
             Next
@@ -309,7 +309,7 @@ const Sequence = ({ userData,loopLength }) => {
           </div>
           <button
             onClick={handleRestart}
-            className="mt-2 p-2 bg-blue-500 text-white"
+            className="mt-2 p-2 bg-blue-500 text-white px-4 rounded-md"
           >
             Try Again
           </button>
