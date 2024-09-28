@@ -135,7 +135,7 @@ const Sequence = ({ userData,loopLength }) => {
         setTimeout(() => {
           index++;
           displayItem();
-        }, sequence[index].type === "plus" ? 200 : 100);
+        }, sequence[index].type === "plus" ? 200 : 75);
       } else {
         setSequenceComplete(true);
         setOptions(generateOptions());
@@ -144,27 +144,34 @@ const Sequence = ({ userData,loopLength }) => {
     displayItem();
   };
 
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
   const generateQuestions = (firstLetter, secondLetter, secondColor) => {
-    return [
-      
+    return ([
       {
         question: "Select target 2",
-        options: generateUniqueOptions(secondLetter, letters),
+        options: generateUniqueOptions(secondLetter, letters), // Randomize options with shuffled correct answer
         answerKey: "secondLetter",
       },
       {
         question: "Which was the colour of target 2?",
-        options: generateUniqueOptions(secondColor, colors),
+        options: generateUniqueOptions(secondColor, colors), // Randomize options with shuffled correct answer
         answerKey: "secondColor",
       },
       {
         question: "Select target 1",
-        options: generateUniqueOptions(firstLetter, letters),
+        options: generateUniqueOptions(firstLetter, letters), // Randomize options with shuffled correct answer
         answerKey: "firstLetter",
       },
-      
-    ];
+    ]);
   };
+  
 
   const generateOptions = () => {
     return {
@@ -180,7 +187,8 @@ const Sequence = ({ userData,loopLength }) => {
     while (uniqueOptions.size < 4) {
       uniqueOptions.add(randomElement(array));
     }
-    return Array.from(uniqueOptions); // No shuffle now
+    let optionsArray = Array.from(uniqueOptions); 
+    return shuffleArray(optionsArray); 
   };
 
   const handleAnswerChange = (e) => {
